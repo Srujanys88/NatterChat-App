@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # Unique key of the Deployment instance
+  name: frontend-deployment
+spec:
+  # 3 Pods should exist at all times.
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template: # about pod 
+    metadata:
+      labels:
+        # Apply this label to pods and default
+        # the Deployment label selector to this value
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        # Run this image 
+        image: suragys111/frontend:2  
